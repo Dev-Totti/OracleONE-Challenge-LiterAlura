@@ -2,15 +2,22 @@ package com.tottidev.literalura.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "libros")
 public class Libro {
     @Id
     private long id;
+
     private String titulo;
+
     @ManyToOne
     private Autor autor;
-    private String idioma;
+
+    @Enumerated(EnumType.STRING)
+    private Idioma idioma;
+
     private int numDescargas;
 
     // Constructors
@@ -20,9 +27,8 @@ public class Libro {
     public Libro(DatosLibro datosLibro) {
         this.id = datosLibro.id();
         this.titulo = datosLibro.titulo();
-//        this.autor = datosLibro.autores();
-//        this.idioma = datosLibro.idiomas()
         this.numDescargas = datosLibro.numDescargas();
+        this.idioma = Idioma.fromString(datosLibro.idiomas().get(0));
     }
 
     // Getters and Setters
@@ -50,11 +56,11 @@ public class Libro {
         this.autor = autor;
     }
 
-    public String getIdioma() {
+    public Idioma getIdioma() {
         return idioma;
     }
 
-    public void setIdioma(String idioma) {
+    public void setIdioma(Idioma idioma) {
         this.idioma = idioma;
     }
 
@@ -68,6 +74,6 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "ID: " + id + "\nTítulo: " + titulo + "\nAutor: " + autor + "\nIdioma: " + idioma + "\nNúmero de descargas: " + numDescargas;
+        return "ID: " + id + " | " + titulo + " (" + autor.getNombre() + ") | Idioma: " + idioma + " | Descargas: " + numDescargas;
     }
 }

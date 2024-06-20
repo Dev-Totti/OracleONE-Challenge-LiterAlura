@@ -11,12 +11,14 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String nombre;
+
     private int yearNacimiento;
+
     private int yearFallecimiento;
 
-    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Libro> libros;
 
     // Constructors
@@ -73,6 +75,6 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "ID: " + id + "\nNombre: " + nombre + "\nAño de nacimiento: " + yearNacimiento + "\nAño de fallecimiento: " + yearFallecimiento;
+        return "ID: " + id + " | " + nombre + " (" + yearNacimiento + "-" + yearFallecimiento + ")";
     }
 }
