@@ -114,7 +114,7 @@ public class Main {
             Book book = bookRepository.findById(datos.id()).orElse(null);
 
             if (book == null) {
-                Author author = authorRepository.findByNameContainingIgnoreCase(datos.authors().getFirst().name()).getFirst();
+                Author author = authorRepository.findByNameContainingIgnoreCase(datos.authors().getFirst().name()).stream().findFirst().orElse(null);
 
                 if (author == null) {
                     author = new Author(datos.authors().getFirst());
