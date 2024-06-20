@@ -5,8 +5,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class ConsumoAPI {
-    public String obtenerDatos(String url) {
+public class APIService {
+    public String getData(String url) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -15,7 +15,7 @@ public class ConsumoAPI {
         try {
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (Exception e) {
-            throw new RuntimeException("Error al consumir la API");
+            throw new RuntimeException("An error occurred while trying to get data from the API");
         }
         return response.body();
     }
