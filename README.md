@@ -32,5 +32,5 @@ Este proyecto es parte del programa Oracle ONE: Next Education en colaboración 
 
 ---
 <p align="center">
-  <img src="https://github.com/Dev-Totti/OracleONE-Challenge-Conversor-Monedas/assets/92545913/81c11650-9859-4cc8-925f-bf798c5b1a4f" width="300px">
+  <img src="https://github.com/Dev-Totti/OracleONE-Challenge-LiterAlura/assets/92545913/a041412c-8831-4b3b-9ecf-37194ed75440" width="300px">
 </p>
